@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.NnUtils.Editor
+namespace NnUtils.Editor
 {
     public class MultiObjectRename : EditorWindow
     {

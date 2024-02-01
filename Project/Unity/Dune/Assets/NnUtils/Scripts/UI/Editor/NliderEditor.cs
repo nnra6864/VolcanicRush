@@ -2,14 +2,14 @@ using UnityEditor;
 
 namespace NnUtils.Scripts.UI.Editor
 {
-    [CustomEditor(typeof(Nlider))]
+    [CustomEditor(typeof(NBar))]
     public class NliderEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             EditorGUILayout.Space(10);
-            var nlider = (Nlider)target;
+            var nlider = (NBar)target;
             EditorGUILayout.LabelField("Values", EditorStyles.boldLabel);
             var range = EditorGUILayout.Vector2Field("Range", new(nlider.Min, nlider.Max));
             nlider.Min = range.x;

@@ -55,11 +55,20 @@ namespace NnUtils.Scripts
         /// </summary>
         /// <param name="lerpPos"></param>
         /// <param name="lerpTime"></param>
+        /// <param name="unscaled"></param>
         /// <param name="easingType"></param>
         /// <returns></returns>
-        public static float UpdateLerpPos(ref float lerpPos, float lerpTime = 1, Easings.Types easingType = Easings.Types.None)
+        public static float UpdateLerpPos(ref float lerpPos, float lerpTime = 1, bool unscaled = false, Easings.Types easingType = Easings.Types.None)
         {
-            lerpPos = Mathf.Clamp01(lerpPos += Time.deltaTime / lerpTime);
+            if (lerpTime == 0) lerpPos = 1;
+            else lerpPos = Mathf.Clamp01(lerpPos += (unscaled ? Time.unscaledDeltaTime : Time.deltaTime) / lerpTime);
+            return Easings.Ease(lerpPos, easingType);
+        }
+
+        public static float ReverseLerpPos(ref float lerpPos, float lerpTime = 1, bool unscaled = false, Easings.Types easingType = Easings.Types.None)
+        {
+            if (lerpTime == 0) lerpPos = 0;
+            else lerpPos = Mathf.Clamp01(lerpPos -= (unscaled ? Time.unscaledDeltaTime : Time.deltaTime) / lerpTime);
             return Easings.Ease(lerpPos, easingType);
         }
         
@@ -80,5 +89,8 @@ namespace NnUtils.Scripts
         }
 
         public static int RandomInvert => Random.Range(0, 2) == 0 ? 1 : -1;
+
+        public static Vector2 AbsV2(Vector2 input) => new(Mathf.Abs(input.x), Mathf.Abs(input.y));
+        public static Vector3 AbsV3(Vector3 input) => new(Mathf.Abs(input.x), Mathf.Abs(input.y), Mathf.Abs(input.z));
     }
 }
