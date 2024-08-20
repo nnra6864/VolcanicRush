@@ -1,0 +1,4 @@
+[submodule "SpaceConqueror/Assets/NnUtils"]
+	path = SpaceConqueror/Assets/NnUtils
+	url = https://www.github.com/nnra6864/NnUtils.git
+	branch = SpaceConqueror

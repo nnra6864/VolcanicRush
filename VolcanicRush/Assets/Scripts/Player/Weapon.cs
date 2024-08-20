@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class Weapon : MonoBehaviour
+    public class Weapon : NnBehaviour
     {
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private LineRenderer _trajectory;
@@ -24,7 +24,7 @@ namespace Player
         {
             if (!GameManager.IsPlaying || Misc.IsPointerOverUI) return;
             if (Input.GetKeyDown(KeyCode.Mouse0)) 
-                Misc.RestartCoroutine(this, ref _shootRoutine, ShootRoutine());
+                RestartRoutine(ref _shootRoutine, ShootRoutine());
             if (Input.touchCount > 0 &&  _shootRoutine == null)
                 StartCoroutine(ShootRoutine());
         }

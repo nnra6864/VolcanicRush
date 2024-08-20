@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using NnUtils.Scripts;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class CameraManager : MonoBehaviour
+    public class CameraManager : NnBehaviour
     {
         public Camera Cam;
         public CinemachineVirtualCamera VirtCam;
@@ -14,8 +15,8 @@ namespace Core
 
         private void Awake()
         {
-            Cam = FindObjectOfType<Camera>();
-            VirtCam = FindObjectOfType<CinemachineVirtualCamera>();
+            Cam = FindFirstObjectByType<Camera>();
+            VirtCam = FindFirstObjectByType<CinemachineVirtualCamera>();
         }
 
         private void Update()
@@ -27,7 +28,7 @@ namespace Core
         public void ChangeCamSize(float size, bool ignoreThreshold = false)
         {
             if (!ignoreThreshold && Mathf.Abs(Cam.orthographicSize - size) < _sizeDiffThreshold) return;
-            Misc.RestartCoroutine(this, ref _changeSizeRoutine, ChangeSizeRoutine(size));
+            RestartRoutine(ref _changeSizeRoutine, ChangeSizeRoutine(size));
         }
 
         private Coroutine _changeSizeRoutine;

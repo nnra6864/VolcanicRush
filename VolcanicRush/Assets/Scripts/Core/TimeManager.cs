@@ -1,16 +1,15 @@
 using System.Collections;
-using Assets.NnUtils.Scripts;
 using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Core
 {
-    public class TimeManager : MonoBehaviour
+    public class TimeManager : NnBehaviour
     {
         public void SetTimescale(float s, float t)
         {
             if (Mathf.Approximately(s, Time.timeScale)) return;
-            Misc.RestartCoroutine(this, ref _setTimescaleRoutine, SetTimeScaleRoutine(s, t));
+            RestartRoutine(ref _setTimescaleRoutine, SetTimeScaleRoutine(s, t));
         }
         private Coroutine _setTimescaleRoutine;
         private IEnumerator SetTimeScaleRoutine(float s, float time, bool constantTime = false, bool pause = true)
@@ -36,7 +35,7 @@ namespace Core
 
         private Coroutine _toggleTimeScaleRoutine;
         public void ToggleTimeScale(bool state) =>
-            Misc.RestartCoroutine(this, ref _toggleTimeScaleRoutine,
+            RestartRoutine(ref _toggleTimeScaleRoutine,
                 SetTimeScaleRoutine(state ? GameManager.PrePauseTimeScale : 0, state ? 0 : 0.5f, true, false));
     }
 }
