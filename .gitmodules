@@ -2,3 +2,6 @@
 	path = SpaceConqueror/Assets/NnUtils
 	url = https://www.github.com/nnra6864/NnUtils.git
 	branch = SpaceConqueror
+[submodule "VolcanicRush/Assets/NnUtils"]
+	path = VolcanicRush/Assets/NnUtils
+	url = https://www.github.com/nnra6864/NnUtils.git
