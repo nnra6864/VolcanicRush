@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 7458989849717196627, guid: 5f3bfe40e4e38e641b8a707ae0571ce9, type: 3}
   _startPos: {x: -3, y: 5, z: 0}
-  _defaultTimeScale: 0.3
+  _defaultTimeScale: 0.5
 --- !u!4 &857340171
 Transform:
   m_ObjectHideFlags: 0
@@ -3506,7 +3506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
