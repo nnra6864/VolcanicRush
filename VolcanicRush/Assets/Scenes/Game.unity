@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chunkPrefab: {fileID: 6797898397984994109, guid: be07a17e96eaf074c98714f5128f1548, type: 3}
-  _genViewThreshold: 50
+  _genViewThreshold: 80
   _pointDistanceRangeX: {x: 40, y: 50}
   _pointDistanceRangeY: {x: 5, y: 10}
   _yLimit: {x: -60, y: 25}

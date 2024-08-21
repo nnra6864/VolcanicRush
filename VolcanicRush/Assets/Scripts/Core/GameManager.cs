@@ -49,7 +49,7 @@ namespace Core
             if (Instance != null) Destroy(Instance.gameObject);
             _instance = this;
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
-            PrePauseTimeScale = DefaultTimeScale;
+            PrePauseTimeScale = 1;
         }
 
         private void Update()

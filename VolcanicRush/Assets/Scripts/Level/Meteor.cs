@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Level
         [SerializeField] private TrailRenderer _trailRenderer;
         [SerializeField] private Vector2 _speedRange;
         [SerializeField] private AnimationCurve _spawnCurve;
+        [SerializeField] private ParticleSystem _particles;
+        [SerializeField] private List<ParticleSystem> _deathParticles;
         private float _speed;
 
         private void Start()
@@ -50,18 +53,21 @@ namespace Level
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Projectile"))
                 GameManager.Score += (int)Misc.Remap(transform.localScale.x - 4.5f, 1, 10, 10, 1);
-            Destroy(gameObject);
+            Explode();
         }
         
         private void Explode()
         {
-            
-        }
-
-        private Coroutine _explodeRoutine;
-        private IEnumerator ExplodeRoutine()
-        {
-            yield return null;
+            _particles.Stop();
+            _particles.transform.SetParent(null);
+            Destroy(_particles.gameObject, _particles.main.startLifetime.constantMax + 1);
+            foreach (var particles in _deathParticles)
+            {
+                particles.transform.SetParent(null);
+                particles.Play();
+                Destroy(particles.gameObject, particles.main.startLifetime.constantMax + 1);
+            }
+            Destroy(gameObject);
         }
     }
 }
