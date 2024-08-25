@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] private float _groundForce, _dashForce;
         [HideInInspector] public bool IsGrounding, IsDashing;
         [SerializeField] private ParticleSystem _groundingParticles;
+        [SerializeField] private ParticleSystem _dashParticles;
 
         private void Start()
         {
@@ -72,6 +73,7 @@ namespace Player
             _rb.gravityScale = 0;
             _rb.linearVelocity = new(_rb.linearVelocity.x <= 0 ? 0 : _rb.linearVelocity.x, 0);
             _rb.AddForce(Vector2.right * _dashForce, ForceMode2D.Impulse);
+            _dashParticles.Play();
             NnManager.AudioManager.Play("Dash");
         
             GameManager.TimeManager.SetTimescale(1.25f, 0);

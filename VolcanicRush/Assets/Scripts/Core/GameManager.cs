@@ -4,6 +4,7 @@ using NnUtils.Scripts;
 using NnUtils.Scripts.Audio;
 using UI;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Core
 {
@@ -26,6 +27,8 @@ namespace Core
             set => Instance._defaultTimeScale = value;
         }
 
+        [SerializeField] private AudioMixer _mixer;
+        
         public static float PrePauseTimeScale;
 
         private static int _score;
@@ -58,6 +61,10 @@ namespace Core
 
         private void Start()
         {
+            var ambience = PlayerPrefs.GetFloat("Ambience", 0);
+            var sfx = PlayerPrefs.GetFloat("SFX", 0);
+            _mixer.SetFloat("Ambience", ambience);
+            _mixer.SetFloat("SFX", sfx);
             StartCoroutine(PlayAmbienceRoutine());
         }
 

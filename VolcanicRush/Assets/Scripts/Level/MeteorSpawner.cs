@@ -35,6 +35,7 @@ namespace Level
             Vector3 pos = new(
                 _player.position.x + Random.Range(_spawnOffsetRange.x, _spawnOffsetRange.y),
                 Random.Range(_spawnRangeY.x, _spawnRangeY.y));
+            if (_player.position.y > 400) pos = _player.position;
             Vector2 dir = new(Random.Range(-0.75f, 0.75f), -1);
             dir.Normalize();
             Instantiate(_meteorPrefab, pos,

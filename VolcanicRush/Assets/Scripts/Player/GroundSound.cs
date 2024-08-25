@@ -1,4 +1,5 @@
 using System.Collections;
+using Core;
 using NnUtils.Scripts;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -24,7 +25,7 @@ namespace Player
 
         private void PlaySound()
         {
-            if (!_player.IsGrounded) return; 
+            if (!Play) return; 
             if (_soundRoutine != null) return;
             _soundRoutine = StartCoroutine(SoundRoutine());
         }
@@ -44,7 +45,7 @@ namespace Player
                 _source.pitch = -1;
             }
             
-            while (_player.IsGrounded)
+            while (Play)
             {
                 if (_source.time >= _loopOffset.y)
                     _source.pitch = -1;
@@ -55,5 +56,7 @@ namespace Player
             _source.pitch = 1;
             _soundRoutine = null;
         }
+
+        private bool Play => _player.IsGrounded && GameManager.IsPlaying && !GameManager.IsDead;
     }
 }

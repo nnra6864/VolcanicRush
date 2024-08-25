@@ -17,11 +17,13 @@ namespace Level
         [SerializeField] private ParticleSystem _particles;
         [SerializeField] private List<ParticleSystem> _deathParticles;
         private float _speed;
+        private Transform _player;
 
         private void Start()
         {
             transform.localScale = Vector3.zero;
             _speed = Random.Range(_speedRange.x, _speedRange.y);
+            _player = GameManager.Player.transform;
             StartCoroutine(Spawn());
         }
 
@@ -35,8 +37,8 @@ namespace Level
         private IEnumerator Spawn()
         {
             float lerpPos = 0;
-            var spawnTime = Random.Range(0.25f, 1f);
-            var size = Vector3.one * Random.Range(5f, 10f);
+            var spawnTime = _player.position.y > 400 ? 0 : Random.Range(0.25f, 1f);
+            var size = Vector3.one * (_player.position.y > 400 ? 30f : Random.Range(5f, 10f));
             var keys = _trailRenderer.widthCurve.keys;
             var endTrailSize =  keys[0].value * size.x;
             while (lerpPos < 1)
