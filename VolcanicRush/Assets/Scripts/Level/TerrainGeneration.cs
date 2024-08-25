@@ -62,6 +62,7 @@ namespace Level
         {
             var min = GameManager.CameraManager.Cam.ScreenToWorldPoint(Vector3.zero);
             var nc = Instantiate(_chunkPrefab, transform);
+            nc.tag = "Terrain";
             var s = nc.spline;
             s.Clear();
         
@@ -91,6 +92,7 @@ namespace Level
                 var pos = new Vector3(prevPos.x, 0);
                 var size = Random.Range(_pointDistanceRangeX.x, _pointDistanceRangeX.y);
                 var nc = Instantiate(_chunkPrefab, pos, Quaternion.identity, transform);
+                nc.tag = "Terrain";
                 var newY = Mathf.Clamp(
                     prevPos.y + Random.Range(_pointDistanceRangeY.x, _pointDistanceRangeY.y) * (_dir *= -1),
                     _yLimit.x, _yLimit.y);

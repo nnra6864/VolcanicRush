@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using UI;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
+        public bool IsGrounded { get; private set; }
+
         [SerializeField] private Movement _movement;
         public Movement Movement => _movement;
-
 
         public void Start()
         {
@@ -32,6 +34,17 @@ namespace Player
         {
             if (other.gameObject.CompareTag("Meteor")) MeteorCollision();
             if (other.gameObject.CompareTag("Wall")) Die();
+            if (other.gameObject.CompareTag("Terrain")) IsGrounded = true;
+        }
+
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Terrain")) IsGrounded = true;
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Terrain")) IsGrounded = false;
         }
 
         private void MeteorCollision()
