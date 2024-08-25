@@ -1,5 +1,6 @@
 using System.Collections;
 using Core;
+using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Player
@@ -11,6 +12,7 @@ namespace Player
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _groundForce, _dashForce;
         [HideInInspector] public bool IsGrounding, IsDashing;
+        [SerializeField] private ParticleSystem _groundingParticles;
 
         private void Start()
         {
@@ -45,9 +47,18 @@ namespace Player
             GameManager.TimeManager.SetTimescale(1, 0);
             GameManager.TimeManager.SetTimescale(GameManager.DefaultTimeScale, 1);
         }
-        public void StartGrounding() => IsGrounding = true;
-        public void StopGrounding() => IsGrounding = false;
-    
+        public void StartGrounding()
+        {
+            IsGrounding = true;
+            _groundingParticles.Play();
+        }
+
+        public void StopGrounding()
+        {
+            IsGrounding = false;
+            _groundingParticles.Stop();
+        }
+
         public void Dash()
         {
             if (_dashRoutine != null) return;
@@ -61,6 +72,7 @@ namespace Player
             _rb.gravityScale = 0;
             _rb.linearVelocity = new(_rb.linearVelocity.x <= 0 ? 0 : _rb.linearVelocity.x, 0);
             _rb.AddForce(Vector2.right * _dashForce, ForceMode2D.Impulse);
+            NnManager.AudioManager.Play("Dash");
         
             GameManager.TimeManager.SetTimescale(1.25f, 0);
             GameManager.TimeManager.SetTimescale(GameManager.DefaultTimeScale, 0.5f);

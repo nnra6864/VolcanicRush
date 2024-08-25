@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de8b6169e8c40e7a3a40cb678bd6a35, type: 3}
+  m_Name: DashSound
+  m_EditorClassIdentifier: 
+  Group: {fileID: 5026078114148473573, guid: 787093096f91cd6dfb1814dc61a3d6bb, type: 2}
+  Name: Dash
+  Clip: {fileID: 8300000, guid: e7bb642b93605ccedb0263085498ccfa, type: 3}
+  Volume: 1
+  PitchRange: {x: 0.9, y: 1.1}
+  GetPitchOnPlay: 1
+  Unscaled: 1
+  Loop: 0
+  SpatialBlend: 0
+  FadeIn: 0
+  FadeInTime: 0
+  FadeInEasing: 1
+  FadeOut: 0
+  FadeOutTime: 0
+  FadeOutEasing: 2

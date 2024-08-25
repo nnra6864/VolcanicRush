@@ -61,6 +61,7 @@ namespace Level
             _particles.Stop();
             _particles.transform.SetParent(null);
             Destroy(_particles.gameObject, _particles.main.startLifetime.constantMax + 1);
+            NnManager.AudioManager.PlayAt("MeteorExplosion", transform.position);
             foreach (var particles in _deathParticles)
             {
                 particles.transform.SetParent(null);

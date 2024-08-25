@@ -69,6 +69,7 @@ namespace Player
             Instantiate(_projectilePrefab, pPos,
                 Quaternion.AngleAxis(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90, Vector3.forward));
             _playerRb.AddForce(-dir * 250, ForceMode2D.Impulse);
+            NnManager.AudioManager.Play("Shoot");
         }
 
         private void DrawRay(RaycastHit2D? hit, Vector3 pPos, Vector3 mousePos)

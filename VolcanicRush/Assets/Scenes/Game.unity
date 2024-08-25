@@ -2098,7 +2098,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 7458989849717196627, guid: 5f3bfe40e4e38e641b8a707ae0571ce9, type: 3}
   _startPos: {x: -3, y: 5, z: 0}
   _ambienceSound: {fileID: 11400000, guid: 8dab0614978067d12a30baa332d9d057, type: 2}
-  _defaultTimeScale: 0.5
+  _defaultTimeScale: 0.3
 --- !u!4 &857340171
 Transform:
   m_ObjectHideFlags: 0
@@ -4888,6 +4888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - {fileID: 11400000, guid: 8dab0614978067d12a30baa332d9d057, type: 2}
+  - {fileID: 11400000, guid: c8175971b80d5c98091267d03ad75013, type: 2}
+  - {fileID: 11400000, guid: b95049bbf9595237686bbad52b4f2085, type: 2}
+  - {fileID: 11400000, guid: 308217467715448cb93169bc8be82be8, type: 2}
 --- !u!114 &1860984318
 MonoBehaviour:
   m_ObjectHideFlags: 0
