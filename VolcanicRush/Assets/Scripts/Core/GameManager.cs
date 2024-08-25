@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
+using NnUtils.Scripts;
+using NnUtils.Scripts.Audio;
 using UI;
 using UnityEngine;
 
 namespace Core
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : NnBehaviour
     {
         private static GameManager _instance;
         public static GameManager Instance => _instance;
@@ -14,6 +17,7 @@ namespace Core
         public static GameObject Player => _player;
         [SerializeField] private Vector3 _startPos = new(-3, 5);
         public static Vector3 StartPos => Instance._startPos;
+        [SerializeField] private Sound _ambienceSound;
         
         [SerializeField] private float _defaultTimeScale;
         public static float DefaultTimeScale
@@ -50,6 +54,11 @@ namespace Core
             _instance = this;
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
             PrePauseTimeScale = 1;
+        }
+
+        private void Start()
+        {
+            StartCoroutine(PlayAmbienceRoutine());
         }
 
         private void Update()
@@ -98,6 +107,15 @@ namespace Core
             IsDead = false;
             TimeManager.ToggleTimeScale(true);
             OnRestartedPlaying?.Invoke();
+        }
+
+        private IEnumerator PlayAmbienceRoutine()
+        {
+            while (true)
+            {
+                NnManager.AudioManager.PlayAt(_ambienceSound, Vector3.zero);
+                yield return new WaitForSecondsRealtime(_ambienceSound.Clip.length * 0.8f - 5);
+            }
         }
         #endregion
 
