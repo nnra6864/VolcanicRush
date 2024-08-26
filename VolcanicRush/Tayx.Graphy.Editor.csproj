@@ -408,8 +408,14 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.LinuxStandalone.Extensions">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
@@ -446,6 +452,12 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>/home/nnra/Data/Projects/Unity/VolcanicRush/VolcanicRush/Library/PackageCache/com.unity.nuget.mono-cecil/Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.13f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/mscorlib.dll</HintPath>
